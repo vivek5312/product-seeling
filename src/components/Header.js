@@ -1,28 +1,16 @@
-import React,{useState} from 'react';
-import { useCart } from './CartContext';
-import Cart from './Cart';
+import React from 'react';
+import Input from './Input';
 
-const Header = () => {
-  const { cartItems } = useCart();
-  const [showCart, setShowCart] = useState(false); // State to control cart visibility
-
-  const handleCartButtonClick = () => {
-    setShowCart(true);
-  };
-
-  const handleCloseCart = () => {
-    setShowCart(false);
-  };
-
+const Header = (props) => {
   return (
     <div>
-      <h1>My Online Store</h1>
-      <p>Cart Items: {cartItems.length}</p>
-      {/* Render the cart button */}
-      <button onClick={handleCartButtonClick}>Cart</button>
-
-      {/* Conditional rendering of the cart component */}
-      {showCart && <Cart cartItems={cartItems} onClose={handleCloseCart} />}
+      <div style={{ display: 'flex', fontSize: '25px', justifyContent: 'center', marginRight: '100px', marginTop: '25px' }}>
+        <button onClick={props.onShowCart}>Cart</button>
+      </div>
+      <h1>T-Shirt Selling App</h1>
+      <div>
+        <Input />
+      </div>
     </div>
   );
 };
